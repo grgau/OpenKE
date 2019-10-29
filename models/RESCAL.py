@@ -8,7 +8,7 @@ class RESCAL(Model):
 
 	def _calc(self, h, t, r):
 		# return h * tf.matmul(r, t)
-		return h * sk.cosine_similarity(r, t)
+		return tf.convert_to_tensor(h * sk.cosine_similarity(r, t))
 
 	def embedding_def(self):
 		#Obtaining the initial configuration of the model
