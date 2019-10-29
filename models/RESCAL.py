@@ -1,12 +1,14 @@
 #coding:utf-8
 import numpy as np
 import tensorflow as tf
+import sklearn.metrics.pairwise as sk
 from .Model import Model
 
 class RESCAL(Model):
 
 	def _calc(self, h, t, r):
-		return h * tf.matmul(r, t)
+		# return h * tf.matmul(r, t)
+		return h * sk.cosine_similarity(r, t)
 
 	def embedding_def(self):
 		#Obtaining the initial configuration of the model
