@@ -10,10 +10,10 @@ class RESCAL(Model):
 		print(h)
 		print(r)
 		print(t)
-		return h * tf.matmul(r, t)
-		# r = tf.nn.l2_normalize(r, 0)
-		# t = tf.nn.l2_normalize(t, 0)
-		# return h * tf.losses.cosine_distance(r, t, dim=0)
+		# return h * tf.matmul(r, t)
+		r = tf.nn.l2_normalize(r, 0)
+		t = tf.nn.l2_normalize(t, 0)
+		return h * tf.losses.cosine_distance(r, t, dim=0)
 
 	def embedding_def(self):
 		#Obtaining the initial configuration of the model
