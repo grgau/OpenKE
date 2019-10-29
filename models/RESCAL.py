@@ -58,5 +58,5 @@ class RESCAL(Model):
 		predict_h, predict_t, predict_r = self.get_predict_instance()
 		predict_h_e = tf.reshape(tf.nn.embedding_lookup(self.ent_embeddings, predict_h), [-1, config.hidden_size, 1])
 		predict_t_e = tf.reshape(tf.nn.embedding_lookup(self.ent_embeddings, predict_t), [-1, config.hidden_size, 1])
-		predict_r_e = tf.reshape(tf.nn.embedding_lookup(self.rel_matrices, predict_r), [-1, config.hidden_size, config.hidden_size])
+		predict_r_e = tf.reshape(tf.nn.embedding_lookup(self.rel_matrices, predict_r), [-1, config.hidden_size, 1])
 		self.predict = -tf.reduce_sum(self._calc(predict_h_e, predict_t_e, predict_r_e), 1, keep_dims = False)
